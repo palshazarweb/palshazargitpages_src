@@ -56,25 +56,9 @@ const distfiles = () => {
     .pipe(dest('./dist'));
 }
 
-const rootfiles = () => {
-    return src([
-      './src_dist/*.*',
-      './src_dist/CNAME'
-      ])
-    .pipe(dest('./dist'));
-}
-
-const gitfiles = () => {
-    return src([
-      './src_dist/.git/**/*' 
-      ])
-    .pipe(dest('./dist/.git'));
-}
-
-
 /*
 Minify the CSS
 Minify the JS
 */
-exports.all = series(compresscss, distfiles, rootfiles, gitfiles);
+exports.all = series(compresscss, distfiles);
 
