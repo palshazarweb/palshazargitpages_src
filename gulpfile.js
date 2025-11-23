@@ -40,9 +40,11 @@ const compresscss = () => {
 };
 
 /*
-  Create or update distribution folder.
-  'base' sets file folder level to project root.
+  Update distribution folder.
+  'base' sets file folder level to project root,
+  encoding seems to stop image corruption.
 */
+
 const distfiles = () => {
     return src([
       'index.html',  
@@ -52,7 +54,10 @@ const distfiles = () => {
       './page_images/*.png', 
       './page_images/*.jpg' 
       ], 
-      {base: './'})
+      {
+        base: './',
+        encoding: false
+      })
     .pipe(dest('./dist'));
 }
 
